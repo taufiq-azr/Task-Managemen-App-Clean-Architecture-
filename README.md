@@ -1,4 +1,4 @@
-# fullstack_taskmanagement
+# Flutter Task Management App
 
 Flutter Task Management App with Clean Architecture + Supabase
 
