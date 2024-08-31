@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "web": true,
+    "windows": true,
+    "linux": true,
+    "macos": true,
+    ".dart_tool": true,
+    ".idea": true,
+    ".vscode": true,
+    "ios": true,
+    "pubspec.lock": true,
+    "fullstack_taskmanagement.iml": true,
+    "analysis_options.yaml": true,
+    ".metadata": true,
+    ".gitignore": true
+  }
+}
