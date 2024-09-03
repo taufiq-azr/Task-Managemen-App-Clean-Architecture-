@@ -1,6 +1,6 @@
 # Flutter Task Management App
 
-Flutter Task Management App with Clean Architecture + Supabase
+Flutter Task Management App with Clean Architecture + My Laravel API
 
 ## Getting Started
 
