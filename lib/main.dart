@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fullstack_taskmanagement/core/secret/supabase_client.dart';
 import 'package:fullstack_taskmanagement/core/theme/app_palette.dart';
 import 'package:fullstack_taskmanagement/features/Auth/domain/usecases/sign_in.dart';
 import 'package:fullstack_taskmanagement/features/Auth/domain/usecases/sign_up.dart';
 import 'package:fullstack_taskmanagement/presentation/pages/auth/signIn_page.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'data/repositories/auth_repository_impl.dart';
 import 'presentation/bloc/auth/auth_bloc.dart';
 
 void main() async {
-  final supabaseSecret = SupabaseSecret();
-  WidgetsFlutterBinding.ensureInitialized();
-  await Supabase.initialize(
-      url: supabaseSecret.clientUrl, anonKey: supabaseSecret.anonKey);
-
-  final authRepository = AuthRepositoryImpl(Supabase.instance.client);
+  
+  final authRepository = AuthRepositoryImpl();
   final signInUseCase = SignIn(repository: authRepository);
   final signUpUseCase = SignUp(repository: authRepository);
 

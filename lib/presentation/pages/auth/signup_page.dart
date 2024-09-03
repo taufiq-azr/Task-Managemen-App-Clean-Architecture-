@@ -30,75 +30,80 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthStates>(
-        listener: (context, state) {
-          if (state == null) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Akun gagal dibuat!')),
-            );
-          }
-        },
-        child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-          ),
-          body: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Text(
-                    'Sign Up.',
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: AppPalette.fontColorPrimary,
-                      fontWeight: FontWeight.bold,
+      listener: (context, state) {
+        if (state == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Akun gagal dibuat!')),
+          );
+        }
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+        ),
+        body: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      'Sign Up.',
+                      style: TextStyle(
+                        fontSize: 40,
+                        color: AppPalette.fontColorPrimary,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                AuthTextField(
-                  textFieldController: _nameController,
-                  iconTextField: Icons.person,
-                  labelTextField: 'Name',
-                ),
-                AuthTextField(
-                  textFieldController: _emailController,
-                  iconTextField: Icons.email,
-                  labelTextField: 'Email',
-                ),
-                AuthTextField(
-                  textFieldController: _passwordController,
-                  obscureTextValue: true,
-                  iconTextField: Icons.password_sharp,
-                  labelTextField: 'Password',
-                ),
-                const SizedBox(
-                  height: 80.0,
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(170, 48),
-                    backgroundColor: AppPalette.buttonColorPrimary,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
+                  const SizedBox(
+                    height: 20.0,
                   ),
-                  onPressed: () {
-                    context.read<AuthBloc>().add(
-                          SignUpEvent(
-                              name: _nameController.text,
-                              email: _emailController.text,
-                              password: _passwordController.text),
-                        );
-                  },
-                  child: const Text("Sign Up"),
-                ),
-              ],
+                  AuthTextField(
+                    textFieldController: _nameController,
+                    iconTextField: Icons.person,
+                    labelTextField: 'Name',
+                  ),
+                  AuthTextField(
+                    textFieldController: _emailController,
+                    iconTextField: Icons.email,
+                    labelTextField: 'Email',
+                  ),
+                  AuthTextField(
+                    textFieldController: _passwordController,
+                    obscureTextValue: true,
+                    iconTextField: Icons.password_sharp,
+                    labelTextField: 'Password',
+                  ),
+                  const SizedBox(
+                    height: 80.0,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(170, 48),
+                      backgroundColor: AppPalette.buttonColorPrimary,
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      context.read<AuthBloc>().add(
+                            SignUpEvent(
+                                name: _nameController.text,
+                                email: _emailController.text,
+                                password: _passwordController.text),
+                          );
+                    },
+                    child: const Text("Sign Up"),
+                  ),
+                ],
+              ),
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

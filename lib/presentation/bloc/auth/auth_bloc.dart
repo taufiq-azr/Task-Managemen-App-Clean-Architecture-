@@ -18,6 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthStates> {
     emit(AuthLoading());
     try {
       await signUpUseCase.execute(event.name, event.email, event.password);
+      
     } catch (e) {
       emit(AuthFailure(e.toString()));
     }
